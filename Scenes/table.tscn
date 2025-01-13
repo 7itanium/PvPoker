@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://c446oaxmr7uo"]
+[gd_scene load_steps=8 format=3 uid="uid://c446oaxmr7uo"]
 
-[ext_resource type="Texture2D" uid="uid://cxd1l5t5ou1iq" path="res://Sprites/Programmer Art/Table.png" id="1_2fe8g"]
+[ext_resource type="Texture2D" uid="uid://cxd1l5t5ou1iq" path="res://Sprites/Table.png" id="1_2fe8g"]
 [ext_resource type="Texture2D" uid="uid://c00didffoaays" path="res://Sprites/Cards.png" id="2_iawv1"]
 [ext_resource type="Texture2D" uid="uid://m7puj5cxuq1q" path="res://Sprites/Deck.png" id="3_u5355"]
 
@@ -34,26 +34,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6srch"]
-atlas = ExtResource("2_iawv1")
-region = Rect2(0, 0, 50, 70)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8x37r"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6srch")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="Table" type="Node2D"]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-scale = Vector2(2.84728, 2.84728)
-metadata/_edit_lock_ = true
 
 [node name="Table" type="Sprite2D" parent="."]
 texture = ExtResource("1_2fe8g")
@@ -162,10 +143,3 @@ metadata/_edit_lock_ = true
 [node name="Deck" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_mcqbc")
-
-[node name="Player 1 Hand" type="Node" parent="."]
-
-[node name="Ace" type="AnimatedSprite2D" parent="Player 1 Hand"]
-position = Vector2(-700, 275)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_8x37r")

@@ -79,6 +79,10 @@ position = Vector2(400, -275)
 scale = Vector2(3, 3)
 texture = ExtResource("2_umrlr")
 
-[node name="Deck" type="AnimatedSprite2D" parent="."]
+[node name="Deck" type="AnimatedSprite2D" parent="Table"]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_mcqbc")
+
+[node name="Camera2D" type="Camera2D" parent="Table"]
+
+[node name="Cards" type="Node" parent="."]

@@ -1,23 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c446oaxmr7uo"]
+[gd_scene load_steps=6 format=3 uid="uid://c446oaxmr7uo"]
 
 [ext_resource type="Texture2D" uid="uid://cxd1l5t5ou1iq" path="res://Sprites/Table.png" id="1_2fe8g"]
-[ext_resource type="Texture2D" uid="uid://c00didffoaays" path="res://Sprites/Cards.png" id="2_iawv1"]
+[ext_resource type="Texture2D" uid="uid://iciw52fjflr5" path="res://Sprites/Cards/empty.png" id="2_umrlr"]
 [ext_resource type="Texture2D" uid="uid://m7puj5cxuq1q" path="res://Sprites/Deck.png" id="3_u5355"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0f0u4"]
-atlas = ExtResource("2_iawv1")
-region = Rect2(50, 280, 50, 70)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_24l31"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0f0u4")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6mi0s"]
 atlas = ExtResource("3_u5355")
@@ -34,7 +19,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Table" type="Node2D"]
+[node name="table" type="Node2D"]
 
 [node name="Table" type="Sprite2D" parent="."]
 texture = ExtResource("1_2fe8g")
@@ -42,103 +27,57 @@ metadata/_edit_lock_ = true
 
 [node name="Player Side" type="Node" parent="Table"]
 
-[node name="Empty" type="AnimatedSprite2D" parent="Table/Player Side"]
-position = Vector2(-700, 275)
+[node name="Empty5" type="Sprite2D" parent="Table/Player Side"]
+position = Vector2(-400, 275)
 scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_24l31")
-metadata/_edit_lock_ = true
+texture = ExtResource("2_umrlr")
 
-[node name="Empty2" type="AnimatedSprite2D" parent="Table/Player Side"]
-position = Vector2(-500, 275)
+[node name="Empty4" type="Sprite2D" parent="Table/Player Side"]
+position = Vector2(-200, 275)
 scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_24l31")
-metadata/_edit_lock_ = true
+texture = ExtResource("2_umrlr")
 
-[node name="Empty3" type="AnimatedSprite2D" parent="Table/Player Side"]
-position = Vector2(-300, 275)
+[node name="Empty3" type="Sprite2D" parent="Table/Player Side"]
+position = Vector2(0, 275)
 scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_24l31")
-metadata/_edit_lock_ = true
+texture = ExtResource("2_umrlr")
 
-[node name="Empty4" type="AnimatedSprite2D" parent="Table/Player Side"]
-position = Vector2(-100, 275)
+[node name="Empty2" type="Sprite2D" parent="Table/Player Side"]
+position = Vector2(200, 275)
 scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_24l31")
-metadata/_edit_lock_ = true
+texture = ExtResource("2_umrlr")
 
-[node name="Empty5" type="AnimatedSprite2D" parent="Table/Player Side"]
-position = Vector2(100, 275)
+[node name="Empty" type="Sprite2D" parent="Table/Player Side"]
+position = Vector2(400, 275)
 scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_24l31")
-metadata/_edit_lock_ = true
-
-[node name="Empty6" type="AnimatedSprite2D" parent="Table/Player Side"]
-position = Vector2(300, 275)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_24l31")
-metadata/_edit_lock_ = true
-
-[node name="Empty7" type="AnimatedSprite2D" parent="Table/Player Side"]
-position = Vector2(500, 275)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_24l31")
-metadata/_edit_lock_ = true
-
-[node name="Empty8" type="AnimatedSprite2D" parent="Table/Player Side"]
-position = Vector2(700, 275)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_24l31")
-metadata/_edit_lock_ = true
+texture = ExtResource("2_umrlr")
 
 [node name="Enemy Side" type="Node" parent="Table"]
 
-[node name="Empty9" type="AnimatedSprite2D" parent="Table/Enemy Side"]
-position = Vector2(-700, -275)
+[node name="Empty5" type="Sprite2D" parent="Table/Enemy Side"]
+position = Vector2(-400, -275)
 scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_24l31")
-metadata/_edit_lock_ = true
+texture = ExtResource("2_umrlr")
 
-[node name="Empty10" type="AnimatedSprite2D" parent="Table/Enemy Side"]
-position = Vector2(-500, -275)
+[node name="Empty4" type="Sprite2D" parent="Table/Enemy Side"]
+position = Vector2(-200, -275)
 scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_24l31")
-metadata/_edit_lock_ = true
+texture = ExtResource("2_umrlr")
 
-[node name="Empty11" type="AnimatedSprite2D" parent="Table/Enemy Side"]
-position = Vector2(-300, -275)
+[node name="Empty3" type="Sprite2D" parent="Table/Enemy Side"]
+position = Vector2(0, -275)
 scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_24l31")
-metadata/_edit_lock_ = true
+texture = ExtResource("2_umrlr")
 
-[node name="Empty12" type="AnimatedSprite2D" parent="Table/Enemy Side"]
-position = Vector2(-100, -275)
+[node name="Empty2" type="Sprite2D" parent="Table/Enemy Side"]
+position = Vector2(200, -275)
 scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_24l31")
-metadata/_edit_lock_ = true
+texture = ExtResource("2_umrlr")
 
-[node name="Empty13" type="AnimatedSprite2D" parent="Table/Enemy Side"]
-position = Vector2(100, -275)
+[node name="Empty" type="Sprite2D" parent="Table/Enemy Side"]
+position = Vector2(400, -275)
 scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_24l31")
-metadata/_edit_lock_ = true
-
-[node name="Empty14" type="AnimatedSprite2D" parent="Table/Enemy Side"]
-position = Vector2(300, -275)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_24l31")
-metadata/_edit_lock_ = true
-
-[node name="Empty15" type="AnimatedSprite2D" parent="Table/Enemy Side"]
-position = Vector2(500, -275)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_24l31")
-metadata/_edit_lock_ = true
-
-[node name="Empty16" type="AnimatedSprite2D" parent="Table/Enemy Side"]
-position = Vector2(700, -275)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_24l31")
-metadata/_edit_lock_ = true
+texture = ExtResource("2_umrlr")
 
 [node name="Deck" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)

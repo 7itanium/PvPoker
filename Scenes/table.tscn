@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cxd1l5t5ou1iq" path="res://Sprites/Programmer Art/Table.png" id="1_2fe8g"]
 [ext_resource type="Texture2D" uid="uid://c00didffoaays" path="res://Sprites/Cards.png" id="2_iawv1"]
-[ext_resource type="Texture2D" uid="uid://brm4tc62n1e85" path="res://Sprites/Programmer Art/Cards/Deck.png" id="6_ocb8n"]
+[ext_resource type="Texture2D" uid="uid://m7puj5cxuq1q" path="res://Sprites/Deck.png" id="3_u5355"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0f0u4"]
 atlas = ExtResource("2_iawv1")
@@ -19,15 +19,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8hi5x"]
-atlas = ExtResource("6_ocb8n")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mi0s"]
+atlas = ExtResource("3_u5355")
 region = Rect2(0, 0, 54, 74)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mcqbc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8hi5x")
+"texture": SubResource("AtlasTexture_6mi0s")
 }],
 "loop": true,
 "name": &"default",

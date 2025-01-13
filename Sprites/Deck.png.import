@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cshti30peg5fd"
-path="res://.godot/imported/Ace.png-164ba7b9ca86de875a9f55fe64be463c.ctex"
+uid="uid://m7puj5cxuq1q"
+path="res://.godot/imported/Deck.png-684f4bb1ee17d888a3135ba73f06491f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Programmer Art/Cards/Diamonds/Ace.png"
-dest_files=["res://.godot/imported/Ace.png-164ba7b9ca86de875a9f55fe64be463c.ctex"]
+source_file="res://Sprites/Deck.png"
+dest_files=["res://.godot/imported/Deck.png-684f4bb1ee17d888a3135ba73f06491f.ctex"]
 
 [params]
 

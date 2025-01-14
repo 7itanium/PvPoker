@@ -18,6 +18,9 @@ func _process(delta: float) -> void:
 		position.x = lerp(position.x, target_position.x, speed * delta)
 		position.y = lerp(position.y, target_position.y, speed * delta)
 
+		var dynamic_path = "res://Sprites/Cards/Diamonds/eight.png"
+		texture = load(dynamic_path)
+
 		# Optional: Snap to the target position when close enough
 		if position.distance_to(target_position) < 1:
 			position = target_position

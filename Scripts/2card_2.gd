@@ -17,6 +17,9 @@ func _process(delta: float) -> void:
 	if game_manager.p2_Cards >= 2:
 		position.x = lerp(position.x, target_position.x, speed * delta)
 		position.y = lerp(position.y, target_position.y, speed * delta)
+		
+		var dynamic_path = "res://Sprites/Cards/Clubs/five.png"
+		texture = load(dynamic_path)
 
 		# Optional: Snap to the target position when close enough
 		if position.distance_to(target_position) < 1:

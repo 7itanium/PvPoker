@@ -1,29 +1,20 @@
-[gd_scene load_steps=27 format=3 uid="uid://c446oaxmr7uo"]
+[gd_scene load_steps=18 format=3 uid="uid://c446oaxmr7uo"]
 
 [ext_resource type="Texture2D" uid="uid://cxd1l5t5ou1iq" path="res://Sprites/Table.png" id="1_2fe8g"]
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_dgbpv"]
 [ext_resource type="Texture2D" uid="uid://iciw52fjflr5" path="res://Sprites/Cards/empty.png" id="2_umrlr"]
 [ext_resource type="Texture2D" uid="uid://m7puj5cxuq1q" path="res://Sprites/Deck.png" id="3_u5355"]
-[ext_resource type="Texture2D" uid="uid://2gnvor2mvk71" path="res://Sprites/Cards/Spades/ace.png" id="4_oj68l"]
 [ext_resource type="Script" path="res://Scripts/card_1.gd" id="5_1cnmm"]
 [ext_resource type="Script" path="res://Scripts/card_2.gd" id="7_cnslf"]
-[ext_resource type="Texture2D" uid="uid://s5flu5wxigxt" path="res://Sprites/Cards/Diamonds/five.png" id="7_loj4w"]
 [ext_resource type="Script" path="res://Scripts/card_3.gd" id="9_c6qw5"]
-[ext_resource type="Texture2D" uid="uid://rtc3mbfnbspw" path="res://Sprites/Cards/Clubs/seven.png" id="9_i6r3x"]
 [ext_resource type="Script" path="res://Scripts/card_4.gd" id="10_kyqmf"]
 [ext_resource type="Script" path="res://Scripts/card_5.gd" id="11_jh6l4"]
-[ext_resource type="Texture2D" uid="uid://darm3ijgmg8l1" path="res://Sprites/Cards/Clubs/two.png" id="11_y47nu"]
-[ext_resource type="Texture2D" uid="uid://dyun2yixr3v5r" path="res://Sprites/Cards/Hearts/nine.png" id="13_nxbnt"]
-[ext_resource type="Texture2D" uid="uid://tto32j587jbi" path="res://Sprites/Cards/Diamonds/eight.png" id="15_0ssfa"]
 [ext_resource type="Script" path="res://Scripts/2card_1.gd" id="15_hhnx1"]
+[ext_resource type="Texture2D" uid="uid://caep3dkg6usxw" path="res://Sprites/Cards/back.png" id="15_jmfcd"]
 [ext_resource type="Script" path="res://Scripts/2card_2.gd" id="16_shv4x"]
 [ext_resource type="Script" path="res://Scripts/2card_3.gd" id="17_tfxro"]
-[ext_resource type="Texture2D" uid="uid://delb7u8bugm3g" path="res://Sprites/Cards/Hearts/six.png" id="17_wlock"]
 [ext_resource type="Script" path="res://Scripts/2card_4.gd" id="18_xmcxw"]
 [ext_resource type="Script" path="res://Scripts/2card_5.gd" id="19_7d264"]
-[ext_resource type="Texture2D" uid="uid://hwbeh212ar2o" path="res://Sprites/Cards/Spades/ten.png" id="19_pr3dj"]
-[ext_resource type="Texture2D" uid="uid://bcrw8aenpilui" path="res://Sprites/Cards/Clubs/nine.png" id="21_v864l"]
-[ext_resource type="Texture2D" uid="uid://06fq22y6tstq" path="res://Sprites/Cards/Spades/queen.png" id="23_6n8v4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6mi0s"]
 atlas = ExtResource("3_u5355")
@@ -116,31 +107,31 @@ sprite_frames = SubResource("SpriteFrames_mcqbc")
 [node name="Card 1" type="Sprite2D" parent="P1 Cards"]
 z_index = 10
 scale = Vector2(3, 3)
-texture = ExtResource("4_oj68l")
+texture = ExtResource("15_jmfcd")
 script = ExtResource("5_1cnmm")
 
 [node name="Card 2" type="Sprite2D" parent="P1 Cards"]
 z_index = 10
 scale = Vector2(3, 3)
-texture = ExtResource("7_loj4w")
+texture = ExtResource("15_jmfcd")
 script = ExtResource("7_cnslf")
 
 [node name="Card 3" type="Sprite2D" parent="P1 Cards"]
 z_index = 10
 scale = Vector2(3, 3)
-texture = ExtResource("9_i6r3x")
+texture = ExtResource("15_jmfcd")
 script = ExtResource("9_c6qw5")
 
 [node name="Card 4" type="Sprite2D" parent="P1 Cards"]
 z_index = 10
 scale = Vector2(3, 3)
-texture = ExtResource("11_y47nu")
+texture = ExtResource("15_jmfcd")
 script = ExtResource("10_kyqmf")
 
 [node name="Card 5" type="Sprite2D" parent="P1 Cards"]
 z_index = 10
 scale = Vector2(3, 3)
-texture = ExtResource("13_nxbnt")
+texture = ExtResource("15_jmfcd")
 script = ExtResource("11_jh6l4")
 
 [node name="P2 Cards" type="Node" parent="."]
@@ -148,29 +139,29 @@ script = ExtResource("11_jh6l4")
 [node name="Card 1" type="Sprite2D" parent="P2 Cards"]
 z_index = 10
 scale = Vector2(3, 3)
-texture = ExtResource("15_0ssfa")
+texture = ExtResource("15_jmfcd")
 script = ExtResource("15_hhnx1")
 
 [node name="Card 2" type="Sprite2D" parent="P2 Cards"]
 z_index = 10
 scale = Vector2(3, 3)
-texture = ExtResource("17_wlock")
+texture = ExtResource("15_jmfcd")
 script = ExtResource("16_shv4x")
 
 [node name="Card 3" type="Sprite2D" parent="P2 Cards"]
 z_index = 10
 scale = Vector2(3, 3)
-texture = ExtResource("19_pr3dj")
+texture = ExtResource("15_jmfcd")
 script = ExtResource("17_tfxro")
 
 [node name="Card 4" type="Sprite2D" parent="P2 Cards"]
 z_index = 10
 scale = Vector2(3, 3)
-texture = ExtResource("21_v864l")
+texture = ExtResource("15_jmfcd")
 script = ExtResource("18_xmcxw")
 
 [node name="Card 5" type="Sprite2D" parent="P2 Cards"]
 z_index = 10
 scale = Vector2(3, 3)
-texture = ExtResource("23_6n8v4")
+texture = ExtResource("15_jmfcd")
 script = ExtResource("19_7d264")

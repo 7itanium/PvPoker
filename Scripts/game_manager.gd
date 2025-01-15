@@ -15,5 +15,3 @@ func _process(delta: float) -> void:
 		print("Player 2 has " + str(p2_Cards) + " cards")
 	if Input.is_action_just_pressed("Reset"):
 		get_tree().reload_current_scene()
-
-#hello

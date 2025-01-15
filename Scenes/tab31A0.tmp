@@ -35,7 +35,6 @@ animations = [{
 
 [node name="Table" type="Sprite2D" parent="."]
 texture = ExtResource("1_2fe8g")
-metadata/_edit_lock_ = true
 
 [node name="Player Side" type="Node" parent="Table"]
 

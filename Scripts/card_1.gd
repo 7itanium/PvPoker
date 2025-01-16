@@ -3,8 +3,10 @@ extends Sprite2D
 var target_position = Vector2(-400, 275)  # Target position
 const SPEED = 5.0  # Adjust this to control the movement speed
 var flipped = 0
+var trash = false
 
 @onready var game_manager: Node = %"Game Manager"
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -12,9 +14,19 @@ func _ready() -> void:
 	position = Vector2(0, 0)  # Start at (0, 0).
 	print(game_manager.p1_Cards)
 	
-	var dynamic_path = "res://Sprites/Cards/back.png"
-	texture = load(dynamic_path)
+	var card_back = "res://Sprites/Cards/back.png"
+	texture = load(card_back)
 
+func _input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if get_viewport_rect().has_point(to_local(event.position)):
+			match trash:
+				false:
+					trash = true
+					target_position.y += 25
+				true:
+					trash = false
+					target_position.y -= 25
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 

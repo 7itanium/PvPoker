@@ -1,0 +1,178 @@
+[gd_scene load_steps=19 format=3 uid="uid://c446oaxmr7uo"]
+
+[ext_resource type="Texture2D" uid="uid://cxd1l5t5ou1iq" path="res://Sprites/Table.png" id="1_2fe8g"]
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_dgbpv"]
+[ext_resource type="Texture2D" uid="uid://iciw52fjflr5" path="res://Sprites/Cards/empty.png" id="2_umrlr"]
+[ext_resource type="Texture2D" uid="uid://m7puj5cxuq1q" path="res://Sprites/Deck.png" id="3_u5355"]
+[ext_resource type="Script" path="res://Scripts/card_1.gd" id="5_1cnmm"]
+[ext_resource type="Script" path="res://Scripts/card_2.gd" id="7_cnslf"]
+[ext_resource type="Script" path="res://Scripts/button.gd" id="7_h3b8b"]
+[ext_resource type="Script" path="res://Scripts/card_3.gd" id="9_c6qw5"]
+[ext_resource type="Script" path="res://Scripts/card_4.gd" id="10_kyqmf"]
+[ext_resource type="Script" path="res://Scripts/card_5.gd" id="11_jh6l4"]
+[ext_resource type="Script" path="res://Scripts/2card_1.gd" id="15_hhnx1"]
+[ext_resource type="Texture2D" uid="uid://caep3dkg6usxw" path="res://Sprites/Cards/back.png" id="15_jmfcd"]
+[ext_resource type="Script" path="res://Scripts/2card_2.gd" id="16_shv4x"]
+[ext_resource type="Script" path="res://Scripts/2card_3.gd" id="17_tfxro"]
+[ext_resource type="Script" path="res://Scripts/2card_4.gd" id="18_xmcxw"]
+[ext_resource type="Script" path="res://Scripts/2card_5.gd" id="19_7d264"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mi0s"]
+atlas = ExtResource("3_u5355")
+region = Rect2(0, 0, 54, 74)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mcqbc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mi0s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="table" type="Node2D"]
+
+[node name="Table" type="Sprite2D" parent="."]
+texture = ExtResource("1_2fe8g")
+metadata/_edit_lock_ = true
+
+[node name="Player Side" type="Node" parent="Table"]
+
+[node name="Empty5" type="Sprite2D" parent="Table/Player Side"]
+position = Vector2(-400, 275)
+scale = Vector2(3, 3)
+texture = ExtResource("2_umrlr")
+
+[node name="Empty4" type="Sprite2D" parent="Table/Player Side"]
+position = Vector2(-200, 275)
+scale = Vector2(3, 3)
+texture = ExtResource("2_umrlr")
+
+[node name="Empty3" type="Sprite2D" parent="Table/Player Side"]
+position = Vector2(0, 275)
+scale = Vector2(3, 3)
+texture = ExtResource("2_umrlr")
+
+[node name="Empty2" type="Sprite2D" parent="Table/Player Side"]
+position = Vector2(200, 275)
+scale = Vector2(3, 3)
+texture = ExtResource("2_umrlr")
+
+[node name="Empty" type="Sprite2D" parent="Table/Player Side"]
+position = Vector2(400, 275)
+scale = Vector2(3, 3)
+texture = ExtResource("2_umrlr")
+
+[node name="Enemy Side" type="Node" parent="Table"]
+
+[node name="Empty5" type="Sprite2D" parent="Table/Enemy Side"]
+position = Vector2(-400, -275)
+scale = Vector2(3, 3)
+texture = ExtResource("2_umrlr")
+
+[node name="Empty4" type="Sprite2D" parent="Table/Enemy Side"]
+position = Vector2(-200, -275)
+scale = Vector2(3, 3)
+texture = ExtResource("2_umrlr")
+
+[node name="Empty3" type="Sprite2D" parent="Table/Enemy Side"]
+position = Vector2(0, -275)
+scale = Vector2(3, 3)
+texture = ExtResource("2_umrlr")
+
+[node name="Empty2" type="Sprite2D" parent="Table/Enemy Side"]
+position = Vector2(200, -275)
+scale = Vector2(3, 3)
+texture = ExtResource("2_umrlr")
+
+[node name="Empty" type="Sprite2D" parent="Table/Enemy Side"]
+position = Vector2(400, -275)
+scale = Vector2(3, 3)
+texture = ExtResource("2_umrlr")
+
+[node name="Deck" type="AnimatedSprite2D" parent="Table"]
+z_index = 20
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_mcqbc")
+
+[node name="Camera2D" type="Camera2D" parent="Table"]
+
+[node name="Game Manager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_dgbpv")
+
+[node name="P1 Cards" type="Node" parent="."]
+
+[node name="Card 1" type="Sprite2D" parent="P1 Cards"]
+z_index = 10
+scale = Vector2(3, 3)
+texture = ExtResource("15_jmfcd")
+script = ExtResource("5_1cnmm")
+
+[node name="Button" type="Button" parent="P1 Cards/Card 1"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -42.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_h3b8b")
+
+[node name="Card 2" type="Sprite2D" parent="P1 Cards"]
+z_index = 10
+scale = Vector2(3, 3)
+texture = ExtResource("15_jmfcd")
+script = ExtResource("7_cnslf")
+
+[node name="Card 3" type="Sprite2D" parent="P1 Cards"]
+z_index = 10
+scale = Vector2(3, 3)
+texture = ExtResource("15_jmfcd")
+script = ExtResource("9_c6qw5")
+
+[node name="Card 4" type="Sprite2D" parent="P1 Cards"]
+z_index = 10
+scale = Vector2(3, 3)
+texture = ExtResource("15_jmfcd")
+script = ExtResource("10_kyqmf")
+
+[node name="Card 5" type="Sprite2D" parent="P1 Cards"]
+z_index = 10
+scale = Vector2(3, 3)
+texture = ExtResource("15_jmfcd")
+script = ExtResource("11_jh6l4")
+
+[node name="P2 Cards" type="Node" parent="."]
+
+[node name="Card 1" type="Sprite2D" parent="P2 Cards"]
+z_index = 10
+scale = Vector2(3, 3)
+texture = ExtResource("15_jmfcd")
+script = ExtResource("15_hhnx1")
+
+[node name="Card 2" type="Sprite2D" parent="P2 Cards"]
+z_index = 10
+scale = Vector2(3, 3)
+texture = ExtResource("15_jmfcd")
+script = ExtResource("16_shv4x")
+
+[node name="Card 3" type="Sprite2D" parent="P2 Cards"]
+z_index = 10
+scale = Vector2(3, 3)
+texture = ExtResource("15_jmfcd")
+script = ExtResource("17_tfxro")
+
+[node name="Card 4" type="Sprite2D" parent="P2 Cards"]
+z_index = 10
+scale = Vector2(3, 3)
+texture = ExtResource("15_jmfcd")
+script = ExtResource("18_xmcxw")
+
+[node name="Card 5" type="Sprite2D" parent="P2 Cards"]
+z_index = 10
+scale = Vector2(3, 3)
+texture = ExtResource("15_jmfcd")
+script = ExtResource("19_7d264")

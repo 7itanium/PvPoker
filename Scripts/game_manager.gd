@@ -85,4 +85,5 @@ func _ready():
 	
 
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("Reset"):
+		get_tree().reload_current_scene()

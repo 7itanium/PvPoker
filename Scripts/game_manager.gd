@@ -3,6 +3,12 @@ extends Node
 var p1_Cards = 0
 var p2_Cards = 0
 
+@onready var card_1: Sprite2D = $"../P1 Cards/Card 1"
+@onready var card_2: Sprite2D = $"../P1 Cards/Card 2"
+@onready var card_3: Sprite2D = $"../P1 Cards/Card 3"
+@onready var card_4: Sprite2D = $"../P1 Cards/Card 4"
+@onready var card_5: Sprite2D = $"../P1 Cards/Card 5"
+
 var base_deck = {
 	"AS": [1, "res://Sprites/Cards/Spades/ace.png"],
 	"AD": [1, "res://Sprites/Cards/Diamonds/ace.png"],
@@ -66,31 +72,17 @@ var cards = deck.keys()
 
 func _ready():
 	await get_tree().create_timer(1).timeout
-	p1_Cards += 1
-	p2_Cards += 1
+	card_1.target_position = Vector2(-400, 275)
 	await get_tree().create_timer(.1).timeout
-	p1_Cards += 1
-	p2_Cards += 1
+	card_2.target_position = Vector2(-200, 275)
 	await get_tree().create_timer(.1).timeout
-	p1_Cards += 1
-	p2_Cards += 1
+	card_3.target_position = Vector2(0, 275)
 	await get_tree().create_timer(.1).timeout
-	p1_Cards += 1
-	p2_Cards += 1
+	card_4.target_position = Vector2(200, 275)
 	await get_tree().create_timer(.1).timeout
-	p1_Cards += 1
-	p2_Cards += 1
+	card_5.target_position = Vector2(400, 275)
+
 	
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("P1-Hit"):
-		p1_Cards += 1
-		print("Player 1 has " + str(p1_Cards) + " cards")
-		  
-	if Input.is_action_just_pressed("P2-Hit"):
-		p2_Cards += 1
-		print("Player 2 has " + str(p2_Cards) + " cards")
-		
-		
-	if Input.is_action_just_pressed("Reset"):
-		get_tree().reload_current_scene()
+	pass

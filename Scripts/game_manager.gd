@@ -8,6 +8,7 @@ var p2_Cards = 0
 @onready var card_3: Sprite2D = $"../P1 Cards/Card 3"
 @onready var card_4: Sprite2D = $"../P1 Cards/Card 4"
 @onready var card_5: Sprite2D = $"../P1 Cards/Card 5"
+@onready var flip_sound: AudioStreamPlayer2D = $FlipSound
 
 var base_deck = {
 	"AS": [1, "res://Sprites/Cards/Spades/ace.png"],
@@ -66,21 +67,24 @@ var base_deck = {
 }
 
 var deck = base_deck
-
 var cards = deck.keys()	
 
-
 func _ready():
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(.25).timeout
 	card_1.target_position = Vector2(-400, 275)
+	flip_sound.play()
 	await get_tree().create_timer(.1).timeout
 	card_2.target_position = Vector2(-200, 275)
+	flip_sound.play()
 	await get_tree().create_timer(.1).timeout
 	card_3.target_position = Vector2(0, 275)
+	flip_sound.play()
 	await get_tree().create_timer(.1).timeout
 	card_4.target_position = Vector2(200, 275)
+	flip_sound.play()
 	await get_tree().create_timer(.1).timeout
 	card_5.target_position = Vector2(400, 275)
+	flip_sound.play()
 
 	
 

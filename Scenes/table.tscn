@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c446oaxmr7uo"]
+[gd_scene load_steps=10 format=3 uid="uid://c446oaxmr7uo"]
 
 [ext_resource type="Texture2D" uid="uid://cxd1l5t5ou1iq" path="res://Sprites/Table.png" id="1_2fe8g"]
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_dgbpv"]
 [ext_resource type="Texture2D" uid="uid://iciw52fjflr5" path="res://Sprites/Cards/empty.png" id="2_umrlr"]
 [ext_resource type="Texture2D" uid="uid://m7puj5cxuq1q" path="res://Sprites/Deck.png" id="3_u5355"]
+[ext_resource type="AudioStream" uid="uid://d3o5077usji22" path="res://Sounds/SFX/card.mp3" id="5_bmd77"]
 [ext_resource type="Script" path="res://Scripts/card.gd" id="6_6txbv"]
 [ext_resource type="Texture2D" uid="uid://caep3dkg6usxw" path="res://Sprites/Cards/back.png" id="15_jmfcd"]
 
@@ -92,6 +93,9 @@ sprite_frames = SubResource("SpriteFrames_mcqbc")
 [node name="Game Manager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_dgbpv")
+
+[node name="FlipSound" type="AudioStreamPlayer2D" parent="Game Manager"]
+stream = ExtResource("5_bmd77")
 
 [node name="P1 Cards" type="Node" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c446oaxmr7uo"]
+[gd_scene load_steps=13 format=3 uid="uid://c446oaxmr7uo"]
 
 [ext_resource type="Texture2D" uid="uid://cxd1l5t5ou1iq" path="res://Sprites/Table.png" id="1_2fe8g"]
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_dgbpv"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://djmf3x3u2lnfm" path="res://Fonts/Minecraft.ttf" id="6_2oipp"]
 [ext_resource type="Script" path="res://Scripts/card.gd" id="6_6txbv"]
 [ext_resource type="Texture2D" uid="uid://c0sd1n23l7uls" path="res://Sprites/Cards/discard.png" id="7_xfv1q"]
+[ext_resource type="Script" path="res://Scripts/discard.gd" id="8_o3b5b"]
 [ext_resource type="Texture2D" uid="uid://caep3dkg6usxw" path="res://Sprites/Cards/back.png" id="15_jmfcd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6mi0s"]
@@ -85,6 +86,11 @@ position = Vector2(400, -275)
 scale = Vector2(3, 3)
 texture = ExtResource("2_umrlr")
 
+[node name="DiscardIcon" type="Sprite2D" parent="Table"]
+position = Vector2(-750, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("7_xfv1q")
+
 [node name="Deck" type="AnimatedSprite2D" parent="Table"]
 z_index = 20
 scale = Vector2(3, 3)
@@ -116,7 +122,25 @@ text = "Submit"
 [node name="Discard" type="Sprite2D" parent="Game Manager"]
 position = Vector2(-750, 0)
 scale = Vector2(3, 3)
-texture = ExtResource("7_xfv1q")
+script = ExtResource("8_o3b5b")
+
+[node name="HandValue" type="Label" parent="Game Manager"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1031.0
+offset_top = -136.0
+offset_right = -886.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_2oipp")
+theme_override_font_sizes/font_size = 56
+text = " "
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="P1 Cards" type="Node" parent="."]
 

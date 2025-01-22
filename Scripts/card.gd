@@ -6,6 +6,10 @@ var flipped = 0
 var trash = false
 var trashing = false
 
+var cardNum = 0
+var cardSuit = "Back"
+var dynamic_path = "res://Sprites/Cards/back.png"
+
 @onready var game_manager: Node = %"Game Manager"
 
 
@@ -25,8 +29,10 @@ func _process(delta: float) -> void:
 	position.y = lerp(position.y, target_position.y, SPEED * delta)
 	
 	if flipped == 0:
-		var card = game_manager.deck[game_manager.cards[randi() % game_manager.cards.size()]]
-		var dynamic_path = card[1]
+		var cardID = game_manager.deck[game_manager.cards[randi() % game_manager.cards.size()]]
+		cardNum = cardID[0]
+		cardSuit = cardID[1]
+		dynamic_path = cardID[2]
 		texture = load(dynamic_path)
 		flipped = 1
 

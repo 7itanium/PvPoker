@@ -8,6 +8,9 @@ var p2_Cards = 0
 @onready var card_3: Sprite2D = $"../P1 Cards/Card 3"
 @onready var card_4: Sprite2D = $"../P1 Cards/Card 4"
 @onready var card_5: Sprite2D = $"../P1 Cards/Card 5"
+@onready var trash: Button = $Trash
+
+@onready var discard: Sprite2D = $Discard
 @onready var flip_sound: AudioStreamPlayer2D = $FlipSound
 
 
@@ -68,44 +71,49 @@ var base_deck = {
 }
 
 var deck = base_deck
-var cards = deck.keys()	
+var cards = deck.keys()
 
 func _ready():
-	await get_tree().create_timer(.25).timeout
-	card_1.target_position = Vector2(-400, 275)
-	flip_sound.play()
-	await get_tree().create_timer(.1).timeout
-	card_2.target_position = Vector2(-200, 275)
-	flip_sound.play()
-	await get_tree().create_timer(.1).timeout
-	card_3.target_position = Vector2(0, 275)
-	flip_sound.play()
-	await get_tree().create_timer(.1).timeout
-	card_4.target_position = Vector2(200, 275)
-	flip_sound.play()
-	await get_tree().create_timer(.1).timeout
-	card_5.target_position = Vector2(400, 275)
-	flip_sound.play()
-
 	
+	var card = [card_1, card_2, card_3, card_4, card_5]
+	var offsets = [-400, -200, 0, 200, 400]
+	await get_tree().create_timer(.25).timeout
+	
+	for i in range(card.size()):
+		card[i].target_position = Vector2(offsets[i], 275)
+		flip_sound.play()
+		await get_tree().create_timer(.1).timeout
+		
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Reset"):
 		get_tree().reload_current_scene()
 
-
 func _on_trash_pressed() -> void:
-	if card_1.trash == true:
-		card_1.target_position = Vector2(-750, 0)
+	trash.disabled = true
+	var card = [card_1, card_2, card_3, card_4, card_5]
+	var offsets = [-400, -200, 0, 200, 400]
+	
+	flip_sound.play()
 
-	if card_2.trash == true:
-		card_2.target_position = Vector2(-750, 0)
+	for i in range(card.size()):
+		if card[i].trash == true:
+			card[i].trashing = true
+			card[i].trash = false
 
-	if card_3.trash == true:
-		card_3.target_position = Vector2(-750, 0)
-
-	if card_4.trash == true:
-		card_4.target_position = Vector2(-750, 0)
-
-	if card_5.trash == true:
-		card_5.target_position = Vector2(-750, 0)
+	for i in range(card.size()):
+		if card[i].trashing == true:
+			card[i].target_position = Vector2(-750, 0)
+	
+	await get_tree().create_timer(1.5).timeout
+	
+	for i in range(card.size()):
+		if card[i].trashing == true:
+			card[i].position = Vector2(0, 0)
+			card[i].target_position = Vector2(offsets[i], 275)
+			card[i].flipped = 0
+			discard.texture = card[i].texture
+			card[i].trashing = false
+			flip_sound.play()
+			await get_tree().create_timer(.1).timeout
+	trash.disabled = false

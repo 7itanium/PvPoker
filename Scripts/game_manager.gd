@@ -72,10 +72,11 @@ var base_deck = {
 
 var deck = base_deck
 var cards = deck.keys()
+var card = []
 
 func _ready():
 	
-	var card = [card_1, card_2, card_3, card_4, card_5]
+	card = [card_1, card_2, card_3, card_4, card_5]
 	var offsets = [-400, -200, 0, 200, 400]
 	await get_tree().create_timer(.25).timeout
 	
@@ -91,7 +92,7 @@ func _process(delta: float) -> void:
 
 func _on_trash_pressed() -> void:
 	trash.disabled = true
-	var card = [card_1, card_2, card_3, card_4, card_5]
+	card = [card_1, card_2, card_3, card_4, card_5]
 	var offsets = [-400, -200, 0, 200, 400]
 	
 	flip_sound.play()

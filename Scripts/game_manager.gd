@@ -14,6 +14,12 @@ var p2_Cards = 0
 @onready var flip_sound: AudioStreamPlayer2D = $FlipSound
 @onready var hand_value: Label = $HandValue
 
+@onready var p1_health_bar: ProgressBar = $"../P1 Cards/HealthBar"
+@onready var p1_health_text: Label = $"../P1 Cards/HealthBar/HealthText"
+@onready var p2_health_bar: ProgressBar = $"../P2 Cards/HealthBar"
+@onready var p2_health_text: Label = $"../P2 Cards/HealthBar/HealthText"
+
+
 
 var deck = {
 	"AS": [1, "Spade", "res://Sprites/Cards/Spades/ace.png"],
@@ -79,6 +85,10 @@ var suits = []
 var handValue = ["None", 0]
 var rerolls = 0
 var empty_texture = " "
+var p1HP = 100
+var p2HP = 100
+var p1dmg = 0
+var p2dmg = 0
 
 func _ready():
 	hand_value.text = handValue[0] + " - " + str(handValue[1]) + " dmg"
@@ -112,7 +122,11 @@ func _process(delta: float) -> void:
 			if card[i].trash == true:
 				card[i].target_position.y -= 25
 				card[i].trash = false
-	
+				
+	p1_health_bar.value = p1HP
+	p1_health_text.text = str(p1HP)
+	p2_health_bar.value = p2HP
+	p2_health_text.text = str(p2HP)
 
 func choose_card(x):
 	var cardKey = cards[randi() % cards.size()]
@@ -154,6 +168,7 @@ func _on_trash_pressed() -> void:
 	check_hand()
 	if rerolls == 3:
 		await get_tree().create_timer(3).timeout
+		p2HP -= p1dmg
 		for i in range(card.size()):
 			card[i].target_position = Vector2(0, 0)
 		discard.target_position = Vector2(0, 0)
@@ -207,3 +222,4 @@ func check_hand():
 		handValue = ["None", 0]
 	
 	hand_value.text = handValue[0] + " - " + str(handValue[1]) + " dmg"
+	p1dmg = handValue[1]

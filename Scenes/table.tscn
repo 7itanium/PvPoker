@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c446oaxmr7uo"]
+[gd_scene load_steps=14 format=3 uid="uid://c446oaxmr7uo"]
 
 [ext_resource type="Texture2D" uid="uid://cxd1l5t5ou1iq" path="res://Sprites/Table.png" id="1_2fe8g"]
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_dgbpv"]
@@ -26,9 +26,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Theme" id="Theme_1c7oq"]
+
 [node name="table" type="Node2D"]
 
 [node name="Table" type="Sprite2D" parent="."]
+z_index = -20
 texture = ExtResource("1_2fe8g")
 metadata/_edit_lock_ = true
 
@@ -92,7 +95,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("7_xfv1q")
 
 [node name="Deck" type="AnimatedSprite2D" parent="Table"]
-z_index = 20
+z_index = 50
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_mcqbc")
 
@@ -120,6 +123,7 @@ theme_override_font_sizes/font_size = 72
 text = "Submit"
 
 [node name="Discard" type="Sprite2D" parent="Game Manager"]
+z_index = 5
 position = Vector2(-750, 0)
 scale = Vector2(3, 3)
 script = ExtResource("8_o3b5b")
@@ -174,6 +178,36 @@ scale = Vector2(3, 3)
 texture = ExtResource("15_jmfcd")
 script = ExtResource("6_6txbv")
 
+[node name="HealthBar" type="ProgressBar" parent="P1 Cards"]
+z_index = -1
+offset_left = -472.0
+offset_top = 74.0
+offset_right = -128.0
+offset_bottom = 111.0
+theme = SubResource("Theme_1c7oq")
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="HealthText" type="Label" parent="P1 Cards/HealthBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = -18.5
+offset_right = 172.0
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_2oipp")
+theme_override_font_sizes/font_size = 32
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="P2 Cards" type="Node" parent="."]
 
 [node name="Card 1" type="Sprite2D" parent="P2 Cards"]
@@ -200,5 +234,40 @@ texture = ExtResource("15_jmfcd")
 z_index = 10
 scale = Vector2(3, 3)
 texture = ExtResource("15_jmfcd")
+
+[node name="HealthBar" type="ProgressBar" parent="P2 Cards"]
+z_index = -1
+anchors_preset = -1
+anchor_left = 0.142
+anchor_top = 0.086
+anchor_right = 0.142
+anchor_bottom = 0.086
+offset_left = -144.64
+offset_top = -203.88
+offset_right = 199.36
+offset_bottom = -166.88
+theme = SubResource("Theme_1c7oq")
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="HealthText" type="Label" parent="P2 Cards/HealthBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = -18.5
+offset_right = 172.0
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_2oipp")
+theme_override_font_sizes/font_size = 32
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Game Manager/Trash" to="Game Manager" method="_on_trash_pressed"]

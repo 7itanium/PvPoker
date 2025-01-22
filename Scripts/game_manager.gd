@@ -10,6 +10,7 @@ var p2_Cards = 0
 @onready var card_5: Sprite2D = $"../P1 Cards/Card 5"
 @onready var flip_sound: AudioStreamPlayer2D = $FlipSound
 
+
 var base_deck = {
 	"AS": [1, "res://Sprites/Cards/Spades/ace.png"],
 	"AD": [1, "res://Sprites/Cards/Diamonds/ace.png"],
@@ -91,3 +92,20 @@ func _ready():
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Reset"):
 		get_tree().reload_current_scene()
+
+
+func _on_trash_pressed() -> void:
+	if card_1.trash == true:
+		card_1.target_position = Vector2(-750, 0)
+
+	if card_2.trash == true:
+		card_2.target_position = Vector2(-750, 0)
+
+	if card_3.trash == true:
+		card_3.target_position = Vector2(-750, 0)
+
+	if card_4.trash == true:
+		card_4.target_position = Vector2(-750, 0)
+
+	if card_5.trash == true:
+		card_5.target_position = Vector2(-750, 0)

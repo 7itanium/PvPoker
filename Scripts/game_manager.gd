@@ -15,7 +15,7 @@ var p2_Cards = 0
 @onready var hand_value: Label = $HandValue
 
 
-var base_deck = {
+var deck = {
 	"AS": [1, "Spade", "res://Sprites/Cards/Spades/ace.png"],
 	"AD": [1, "Diamond", "res://Sprites/Cards/Diamonds/ace.png"],
 	"AH": [1, "Heart", "res://Sprites/Cards/Hearts/ace.png"],
@@ -70,27 +70,31 @@ var base_deck = {
 	"KC": [13, "Club", "res://Sprites/Cards/Clubs/king.png"]
 }
 
-var deck = base_deck
 var cards = deck.keys()
 var card = []
-var offsets = [-400, -200, 0, 200, 400]
+var offsets = []
 var hand = []
 var values = []
 var suits = []
 var handValue = ["None", 0]
 var rerolls = 0
-var discard_texture = " "
+var empty_texture = " "
 
 func _ready():
+	hand_value.text = handValue[0] + " - " + str(handValue[1]) + " dmg"
 	discard.position = Vector2(-750,0)
 	discard.target_position = Vector2(-750,0)
+	discard.texture = load(empty_texture)
 	
-	discard.texture = load(discard_texture)
+	cards = deck.keys()
 	
 	rerolls = 0
 	card = [card_1, card_2, card_3, card_4, card_5]
 	offsets = [-400, -200, 0, 200, 400]
 	await get_tree().create_timer(.25).timeout
+	
+	for i in range(card.size()):
+		choose_card(i)
 	
 	for i in range(card.size()):
 		card[i].target_position = Vector2(offsets[i], 275)
@@ -108,6 +112,16 @@ func _process(delta: float) -> void:
 			if card[i].trash == true:
 				card[i].target_position.y -= 25
 				card[i].trash = false
+	
+
+func choose_card(x):
+	var cardKey = cards[randi() % cards.size()]
+	var cardID = deck[cardKey]
+	card[x].cardNum = cardID[0]
+	card[x].cardSuit = cardID[1]
+	card[x].dynamic_path = cardID[2]
+	card[x].texture = load(card[x].dynamic_path)
+	cards.erase(cardKey)
 
 func _on_trash_pressed() -> void:
 	rerolls += 1
@@ -126,13 +140,14 @@ func _on_trash_pressed() -> void:
 	
 	await get_tree().create_timer(1.5).timeout
 	
+		
 	
 	for i in range(card.size()):
 		if card[i].trashing == true:
 			card[i].position = Vector2(0, 0)
 			card[i].target_position = Vector2(offsets[i], 275)
-			card[i].flipped = 0
 			discard.texture = card[i].texture
+			choose_card(i)
 			card[i].trashing = false
 			flip_sound.play()
 			await get_tree().create_timer(.1).timeout

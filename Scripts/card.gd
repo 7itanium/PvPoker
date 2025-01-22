@@ -28,13 +28,15 @@ func _process(delta: float) -> void:
 	position.x = lerp(position.x, target_position.x, SPEED * delta)
 	position.y = lerp(position.y, target_position.y, SPEED * delta)
 	
-	if flipped == 0:
-		var cardID = game_manager.deck[game_manager.cards[randi() % game_manager.cards.size()]]
-		cardNum = cardID[0]
-		cardSuit = cardID[1]
-		dynamic_path = cardID[2]
-		texture = load(dynamic_path)
-		flipped = 1
+	#if flipped == 0:
+		#var cardKey = game_manager.cards[randi() % game_manager.cards.size()]
+		#var cardID = game_manager.deck[cardKey]
+		#cardNum = cardID[0]
+		#cardSuit = cardID[1]
+		#dynamic_path = cardID[2]
+		#texture = load(dynamic_path)
+		#flipped = 1
+		#game_manager.remove_card(cardKey)
 
 	# Optional: Snap to the target position when close enough
 	if position.distance_to(target_position) < 1:

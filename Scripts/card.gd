@@ -2,7 +2,6 @@ extends Sprite2D
 
 var target_position = Vector2(0, 0)  # Target position
 const SPEED = 5.0  # Adjust this to control the movement speed
-var flipped = 0
 var trash = false
 var trashing = false
 

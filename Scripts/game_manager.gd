@@ -6,10 +6,18 @@ extends Node
 @onready var card_4: Sprite2D = $"../P1 Cards/Card 4"
 @onready var card_5: Sprite2D = $"../P1 Cards/Card 5"
 
+@onready var card_6: Sprite2D = $"../P2 Cards/Card 1"
+@onready var card_7: Sprite2D = $"../P2 Cards/Card 2"
+@onready var card_8: Sprite2D = $"../P2 Cards/Card 3"
+@onready var card_9: Sprite2D = $"../P2 Cards/Card 4"
+@onready var card_10: Sprite2D = $"../P2 Cards/Card 5"
+
+
 @onready var trash: Button = $Trash
 @onready var discard: Sprite2D = $Discard
 @onready var flip_sound: AudioStreamPlayer2D = $FlipSound
-@onready var hand_value: Label = $HandValue
+@onready var p1_hand_value: Label = $HandValue
+@onready var p2_hand_value: Label = $HandValue2
 
 @onready var p1_health_bar: ProgressBar = $"../P1 Cards/HealthBar"
 @onready var p1_health_text: Label = $"../P1 Cards/HealthBar/HealthText"
@@ -74,12 +82,15 @@ var deck = {
 }
 
 var liveDeck = deck.keys()
-var card = []
+var p1Hand = []
+var p1HandValue = ["None", 0]
+var p2HandValue = ["None", 0]
+var p2Hand = []
+var bothHands = []
 var offsets = []
 var hand = []
 var values = []
 var suits = []
-var handValue = ["None", 0]
 var rerolls = 0
 var empty_texture = " "
 var p1HP = 100
@@ -88,80 +99,105 @@ var p1dmg = 0
 var p2dmg = 0
 
 func _ready():
-	hand_value.text = handValue[0] + " - " + str(handValue[1]) + " dmg"
+	p1_hand_value.text = p1HandValue[0] + " - " + str(p1HandValue[1]) + " dmg"
+	p2_hand_value.text = p2HandValue[0] + " - " + str(p2HandValue[1]) + " dmg"
 	discard.target_position = Vector2(-750,0)
 	discard.texture = load(empty_texture)
 	
 	liveDeck = deck.keys()
 	
 	rerolls = 0
-	card = [card_1, card_2, card_3, card_4, card_5]
+	p1Hand = [card_1, card_2, card_3, card_4, card_5]
+	p2Hand = [card_6, card_7, card_8, card_9, card_10]
 	offsets = [-400, -200, 0, 200, 400]
 	await get_tree().create_timer(.25).timeout
 	
-	for i in range(card.size()):
-		choose_card(i)
+	for i in range(0,5):
+		choose_card(i, p1Hand)
+		choose_card(i, p2Hand)
 	
-	for i in range(card.size()):
-		card[i].target_position = Vector2(offsets[i], 275)
-		card[i].flipped = 0
+	for i in range(0,5):
+		p1Hand[i].target_position = Vector2(offsets[i], 275)
 		flip_sound.play()
+		p2Hand[i].target_position = Vector2(offsets[i], -275)
 		await get_tree().create_timer(.1).timeout
 	
-	check_hand()
+	check_hand(p1Hand)
+	check_hand(p2Hand)
+	p1HandValue = check_hand(p1Hand)
+	p1dmg = p1HandValue[1]
+	p1_hand_value.text = p1HandValue[0] + " - " + str(p1dmg) + " dmg"
+	p2HandValue = check_hand(p2Hand)
+	p2dmg = p2HandValue[1]
+	p2_hand_value.text = p2HandValue[0] + " - " + str(p2dmg) + " dmg"
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Reset"):
 		get_tree().reload_current_scene()
 	if rerolls == 3:
-		for i in range(card.size()):
-			if card[i].trash == true:
-				card[i].target_position.y -= 25
-				card[i].trash = false
-				
+		for i in range(0,5):
+			if p1Hand[i].trash == true:
+				p1Hand[i].target_position.y -= 25
+				p1Hand[i].trash = false
+			if p2Hand[i].trash == true:
+				p2Hand[i].target_position.y -= 25
+				p2Hand[i].trash = false
+			
 	p1_health_bar.value = p1HP
 	p1_health_text.text = "P1: " + str(p1HP)
 	p2_health_bar.value = p2HP
 	p2_health_text.text = "P2: " + str(p2HP)
 
-func choose_card(x):
+func choose_card(x, hand):
 	var cardKey = liveDeck[randi() % liveDeck.size()]
 	var cardID = deck[cardKey]
-	card[x].cardNum = cardID[0]
-	card[x].cardSuit = cardID[1]
-	card[x].dynamic_path = cardID[2]
-	card[x].texture = load(card[x].dynamic_path)
+	hand[x].cardNum = cardID[0]
+	hand[x].cardSuit = cardID[1]
+	hand[x].dynamic_path = cardID[2]
+	hand[x].texture = load(hand[x].dynamic_path)
 	liveDeck.erase(cardKey)
 
 func _on_trash_pressed() -> void:
 	rerolls += 1
 	trash.disabled = true
-	card = [card_1, card_2, card_3, card_4, card_5]
+	p1Hand = [card_1, card_2, card_3, card_4, card_5]
+	p2Hand = [card_6, card_7, card_8, card_9, card_10]
+	bothHands = p1Hand + p2Hand
 	offsets = [-400, -200, 0, 200, 400]
 	
 	flip_sound.play()
 	
-	for i in range(card.size()):
-		if card[i].trash == true:
-			card[i].trashing = true
-			card[i].trash = false
-			card[i].target_position = Vector2(-750, 0)
+	for i in range(0,10):
+		if bothHands[i].trash == true:
+			bothHands[i].trashing = true
+			bothHands[i].trash = false
+			bothHands[i].target_position = Vector2(-750, 0)
 			
 	
 	await get_tree().create_timer(1.5).timeout
 	
 		
 	
-	for i in range(card.size()):
-		if card[i].trashing == true:
-			card[i].position = Vector2(0, 0)
-			card[i].target_position = Vector2(offsets[i], 275)
-			discard.texture = card[i].texture
-			choose_card(i)
-			card[i].trashing = false
+	for i in range(0,10):
+		if bothHands[i].trashing == true:
+			bothHands[i].position = Vector2(0, 0)
+			if i >= 5:
+				bothHands[i].target_position = Vector2(offsets[i - 5], -275)
+			else:
+				bothHands[i].target_position = Vector2(offsets[i], 275)
+			discard.texture = bothHands[i].texture
+			choose_card(i, bothHands)
+			bothHands[i].trashing = false
 			flip_sound.play()
 			await get_tree().create_timer(.1).timeout
-	check_hand()
+	p1HandValue = check_hand(p1Hand)
+	p1dmg = p1HandValue[1]
+	p1_hand_value.text = p1HandValue[0] + " - " + str(p1dmg) + " dmg"
+	p2HandValue = check_hand(p2Hand)
+	p2dmg = p2HandValue[1]
+	p2_hand_value.text = p2HandValue[0] + " - " + str(p2dmg) + " dmg"
+	
+	
 	if rerolls == 3:
 		await get_tree().create_timer(3).timeout
 		p2HP -= p1dmg
@@ -170,21 +206,22 @@ func _on_trash_pressed() -> void:
 			p1HP = 0
 		if p2HP < 0: 
 			p2HP = 0
-		for i in range(card.size()):
-			card[i].target_position = Vector2(0, 0)
+		for i in range(0,10):
+			bothHands[i].target_position = Vector2(0, 0)
 		discard.target_position = Vector2(0, 0)
 		await get_tree().create_timer(1.5).timeout
 		_ready()
 
 	trash.disabled = false
 
-func check_hand():
-	values = [card_1.cardNum, card_2.cardNum, card_3.cardNum, card_4.cardNum, card_5.cardNum]
+func check_hand(hand):
+	values = [hand[0].cardNum, hand[1].cardNum, hand[2].cardNum, hand[3].cardNum, hand[4].cardNum]
 	values.sort()
 	var straightCheck = [values[0], values[1] - 1, values[2] - 2, values[3] - 3, values[4] - 4]
-	suits = [card_1.cardSuit, card_2.cardSuit, card_3.cardSuit, card_4.cardSuit, card_5.cardSuit]
+	suits = [hand[0].cardSuit, hand[1].cardSuit, hand[2].cardSuit, hand[3].cardSuit, hand[4].cardSuit]
 	var matches = 0
 	var siblings = 0
+	var handValue = ["None", 0]
 	
 	for item in values:
 		if values.count(item) > 1:
@@ -222,5 +259,6 @@ func check_hand():
 	else:
 		handValue = ["None", 0]
 	
-	hand_value.text = handValue[0] + " - " + str(handValue[1]) + " dmg"
-	p1dmg = handValue[1]
+	return handValue
+	#hand_value.text = handValue[0] + " - " + str(handValue[1]) + " dmg"
+	#dmg = handValue[1]

@@ -199,9 +199,9 @@ script = ExtResource("6_6txbv")
 [node name="HealthBar" type="ProgressBar" parent="P1 Cards"]
 z_index = -1
 offset_left = -472.0
-offset_top = -111.0
+offset_top = 74.0
 offset_right = -128.0
-offset_bottom = -74.0
+offset_bottom = 111.0
 theme = SubResource("Theme_1c7oq")
 step = 1.0
 value = 100.0

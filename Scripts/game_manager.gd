@@ -92,7 +92,6 @@ var p2dmg = 0
 
 func _ready():
 	hand_value.text = handValue[0] + " - " + str(handValue[1]) + " dmg"
-	discard.position = Vector2(-750,0)
 	discard.target_position = Vector2(-750,0)
 	discard.texture = load(empty_texture)
 	
@@ -124,9 +123,9 @@ func _process(delta: float) -> void:
 				card[i].trash = false
 				
 	p1_health_bar.value = p1HP
-	p1_health_text.text = str(p1HP)
+	p1_health_text.text = "P1: " + str(p1HP)
 	p2_health_bar.value = p2HP
-	p2_health_text.text = str(p2HP)
+	p2_health_text.text = "P2: " + str(p2HP)
 
 func choose_card(x):
 	var cardKey = cards[randi() % cards.size()]
@@ -169,6 +168,11 @@ func _on_trash_pressed() -> void:
 	if rerolls == 3:
 		await get_tree().create_timer(3).timeout
 		p2HP -= p1dmg
+		p1HP -= p2dmg
+		if p1HP < 0: 
+			p1HP = 0
+		if p2HP < 0: 
+			p2HP = 0
 		for i in range(card.size()):
 			card[i].target_position = Vector2(0, 0)
 		discard.target_position = Vector2(0, 0)

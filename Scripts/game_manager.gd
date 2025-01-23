@@ -97,13 +97,14 @@ var hand = []
 var values = []
 var suits = []
 var rerolls = 0
-var round_marker_full_texture = "res://Sprites/Cards/round_marker_full.png"
-var round_marker_empty_texture = "res://Sprites/Cards/round_marker_empty.png"
+var round_marker_full_texture = "res://Sprites/round_marker_full.png"
+var round_marker_empty_texture = "res://Sprites/round_marker_empty.png"
 var empty_texture = " "
 var p1HP = 100
 var p2HP = 100
 var p1dmg = 0
 var p2dmg = 0
+var in_game = true
 
 func _ready():
 	p1_hand_value.text = p1HandValue[0] + " - " + str(p1HandValue[1]) + " dmg"
@@ -164,14 +165,15 @@ func _process(delta: float) -> void:
 	p1_health_text.text = "P1: " + str(p1HP)
 	p2_health_bar.value = p2HP
 	p2_health_text.text = "P2: " + str(p2HP)
+	
 
-func choose_card(x, hand):
+func choose_card(x, handnum):
 	var cardKey = liveDeck[randi() % liveDeck.size()]
 	var cardID = deck[cardKey]
-	hand[x].cardNum = cardID[0]
-	hand[x].cardSuit = cardID[1]
-	hand[x].dynamic_path = cardID[2]
-	hand[x].texture = load(hand[x].dynamic_path)
+	handnum[x].cardNum = cardID[0]
+	handnum[x].cardSuit = cardID[1]
+	handnum[x].dynamic_path = cardID[2]
+	handnum[x].texture = load(handnum[x].dynamic_path)
 	liveDeck.erase(cardKey)
 
 func _on_trash_pressed() -> void:
@@ -231,11 +233,11 @@ func _on_trash_pressed() -> void:
 
 	trash.disabled = false
 
-func check_hand(hand):
-	values = [hand[0].cardNum, hand[1].cardNum, hand[2].cardNum, hand[3].cardNum, hand[4].cardNum]
+func check_hand(handnum):
+	values = [handnum[0].cardNum, handnum[1].cardNum, handnum[2].cardNum, handnum[3].cardNum, handnum[4].cardNum]
 	values.sort()
 	var straightCheck = [values[0], values[1] - 1, values[2] - 2, values[3] - 3, values[4] - 4]
-	suits = [hand[0].cardSuit, hand[1].cardSuit, hand[2].cardSuit, hand[3].cardSuit, hand[4].cardSuit]
+	suits = [handnum[0].cardSuit, handnum[1].cardSuit, handnum[2].cardSuit, handnum[3].cardSuit, handnum[4].cardSuit]
 	var matches = 0
 	var siblings = 0
 	var handValue = ["None", 0]
@@ -277,5 +279,3 @@ func check_hand(hand):
 		handValue = ["None", 0]
 	
 	return handValue
-	#hand_value.text = handValue[0] + " - " + str(handValue[1]) + " dmg"
-	#dmg = handValue[1]

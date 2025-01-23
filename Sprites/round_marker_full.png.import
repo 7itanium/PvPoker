@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://blwnxac351dtt"
-path="res://.godot/imported/round_marker_full.png-cb6a76af1439bf59949b8a5b6ba44ee7.ctex"
+path="res://.godot/imported/round_marker_full.png-00934c7bf82053897868d45918afc812.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Cards/round_marker_full.png"
-dest_files=["res://.godot/imported/round_marker_full.png-cb6a76af1439bf59949b8a5b6ba44ee7.ctex"]
+source_file="res://Sprites/round_marker_full.png"
+dest_files=["res://.godot/imported/round_marker_full.png-00934c7bf82053897868d45918afc812.ctex"]
 
 [params]
 

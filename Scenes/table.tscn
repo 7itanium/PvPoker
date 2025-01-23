@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://iciw52fjflr5" path="res://Sprites/Cards/empty.png" id="2_umrlr"]
 [ext_resource type="Texture2D" uid="uid://m7puj5cxuq1q" path="res://Sprites/Deck.png" id="3_u5355"]
 [ext_resource type="AudioStream" uid="uid://d3o5077usji22" path="res://Sounds/SFX/card.mp3" id="5_bmd77"]
-[ext_resource type="Texture2D" uid="uid://fh2q6vvx3cgl" path="res://Sprites/Cards/round_marker_empty.png" id="5_gykdl"]
+[ext_resource type="Texture2D" path="res://Sprites/Cards/round_marker_empty.png" id="5_gykdl"]
 [ext_resource type="FontFile" uid="uid://djmf3x3u2lnfm" path="res://Fonts/Minecraft.ttf" id="6_2oipp"]
 [ext_resource type="Script" path="res://Scripts/card.gd" id="6_6txbv"]
 [ext_resource type="Texture2D" uid="uid://c0sd1n23l7uls" path="res://Sprites/Cards/discard.png" id="7_xfv1q"]

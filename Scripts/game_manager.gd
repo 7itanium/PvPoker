@@ -1,8 +1,5 @@
 extends Node
 
-var p1_Cards = 0
-var p2_Cards = 0
-
 @onready var card_1: Sprite2D = $"../P1 Cards/Card 1"
 @onready var card_2: Sprite2D = $"../P1 Cards/Card 2"
 @onready var card_3: Sprite2D = $"../P1 Cards/Card 3"
@@ -76,7 +73,7 @@ var deck = {
 	"KC": [13, "Club", "res://Sprites/Cards/Clubs/king.png"]
 }
 
-var cards = deck.keys()
+var liveDeck = deck.keys()
 var card = []
 var offsets = []
 var hand = []
@@ -95,7 +92,7 @@ func _ready():
 	discard.target_position = Vector2(-750,0)
 	discard.texture = load(empty_texture)
 	
-	cards = deck.keys()
+	liveDeck = deck.keys()
 	
 	rerolls = 0
 	card = [card_1, card_2, card_3, card_4, card_5]
@@ -128,13 +125,13 @@ func _process(delta: float) -> void:
 	p2_health_text.text = "P2: " + str(p2HP)
 
 func choose_card(x):
-	var cardKey = cards[randi() % cards.size()]
+	var cardKey = liveDeck[randi() % liveDeck.size()]
 	var cardID = deck[cardKey]
 	card[x].cardNum = cardID[0]
 	card[x].cardSuit = cardID[1]
 	card[x].dynamic_path = cardID[2]
 	card[x].texture = load(card[x].dynamic_path)
-	cards.erase(cardKey)
+	liveDeck.erase(cardKey)
 
 func _on_trash_pressed() -> void:
 	rerolls += 1

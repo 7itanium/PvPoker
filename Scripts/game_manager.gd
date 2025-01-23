@@ -24,6 +24,11 @@ extends Node
 @onready var p2_health_bar: ProgressBar = $"../P2 Cards/HealthBar"
 @onready var p2_health_text: Label = $"../P2 Cards/HealthBar/HealthText"
 
+@onready var round_marker_1: Sprite2D = $"../Table/Round Marker 1"
+@onready var round_marker_2: Sprite2D = $"../Table/Round Marker 2"
+@onready var round_marker_3: Sprite2D = $"../Table/Round Marker 3"
+
+
 
 
 var deck = {
@@ -92,6 +97,8 @@ var hand = []
 var values = []
 var suits = []
 var rerolls = 0
+var round_marker_full_texture = "res://Sprites/Cards/round_marker_full.png"
+var round_marker_empty_texture = "res://Sprites/Cards/round_marker_empty.png"
 var empty_texture = " "
 var p1HP = 100
 var p2HP = 100
@@ -134,14 +141,24 @@ func _ready():
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Reset"):
 		get_tree().reload_current_scene()
-	if rerolls == 3:
-		for i in range(0,5):
-			if p1Hand[i].trash == true:
-				p1Hand[i].target_position.y -= 25
-				p1Hand[i].trash = false
-			if p2Hand[i].trash == true:
-				p2Hand[i].target_position.y -= 25
-				p2Hand[i].trash = false
+	match rerolls:
+		0:
+			round_marker_1.texture = load(round_marker_empty_texture)
+			round_marker_2.texture = load(round_marker_empty_texture)
+			round_marker_3.texture = load(round_marker_empty_texture)
+		1:
+			round_marker_1.texture = load(round_marker_full_texture)
+		2:
+			round_marker_2.texture = load(round_marker_full_texture)
+		3:
+			round_marker_3.texture = load(round_marker_full_texture)
+			for i in range(0,5):
+				if p1Hand[i].trash == true:
+					p1Hand[i].target_position.y -= 25
+					p1Hand[i].trash = false
+				if p2Hand[i].trash == true:
+					p2Hand[i].target_position.y -= 25
+					p2Hand[i].trash = false
 			
 	p1_health_bar.value = p1HP
 	p1_health_text.text = "P1: " + str(p1HP)

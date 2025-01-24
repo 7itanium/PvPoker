@@ -1,0 +1,114 @@
+[gd_scene load_steps=3 format=3 uid="uid://7eypnfnan0km"]
+
+[ext_resource type="Texture2D" uid="uid://eyjkgedsewvl" path="res://Sprites/trashUI.png" id="1_axr70"]
+[ext_resource type="Script" path="res://Scripts/trashed_card.gd" id="2_xubjx"]
+
+[node name="UI" type="Node2D"]
+
+[node name="Trash" type="Sprite2D" parent="."]
+z_index = -20
+scale = Vector2(3, 3)
+texture = ExtResource("1_axr70")
+script = ExtResource("2_xubjx")
+
+[node name="Cards" type="Node2D" parent="."]
+
+[node name="Discarded 1" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(-81, -243)
+scale = Vector2(3, 3)
+
+[node name="Discarded 2" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(-81, -189)
+scale = Vector2(3, 3)
+
+[node name="Discarded 3" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(-81, -135)
+scale = Vector2(3, 3)
+
+[node name="Discarded 4" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(-81, -81)
+scale = Vector2(3, 3)
+
+[node name="Discarded 5" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(-81, -27)
+scale = Vector2(3, 3)
+
+[node name="Discarded 6" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(-81, 27)
+scale = Vector2(3, 3)
+
+[node name="Discarded 7" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(-81, 81)
+scale = Vector2(3, 3)
+
+[node name="Discarded 8" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(-81, 135)
+scale = Vector2(3, 3)
+
+[node name="Discarded 9" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(-81, 189)
+scale = Vector2(3, 3)
+
+[node name="Discarded 10" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(-81, 243)
+scale = Vector2(3, 3)
+
+[node name="Discarded 11" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(81, -243)
+scale = Vector2(3, 3)
+
+[node name="Discarded 12" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(81, -189)
+scale = Vector2(3, 3)
+
+[node name="Discarded 13" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(81, -135)
+scale = Vector2(3, 3)
+
+[node name="Discarded 14" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(81, -81)
+scale = Vector2(3, 3)
+
+[node name="Discarded 15" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(81, -27)
+scale = Vector2(3, 3)
+
+[node name="Discarded 16" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(81, 27)
+scale = Vector2(3, 3)
+
+[node name="Discarded 17" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(81, 81)
+scale = Vector2(3, 3)
+
+[node name="Discarded 18" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(81, 135)
+scale = Vector2(3, 3)
+
+[node name="Discarded 19" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(81, 189)
+scale = Vector2(3, 3)
+
+[node name="Discarded 20" type="Sprite2D" parent="Cards"]
+z_index = 10
+position = Vector2(81, 243)
+scale = Vector2(3, 3)

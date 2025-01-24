@@ -1,15 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://c446oaxmr7uo"]
+[gd_scene load_steps=17 format=3 uid="uid://c446oaxmr7uo"]
 
 [ext_resource type="Texture2D" uid="uid://cxd1l5t5ou1iq" path="res://Sprites/Table.png" id="1_2fe8g"]
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_dgbpv"]
 [ext_resource type="Texture2D" uid="uid://iciw52fjflr5" path="res://Sprites/Cards/empty.png" id="2_umrlr"]
 [ext_resource type="Texture2D" uid="uid://m7puj5cxuq1q" path="res://Sprites/Deck.png" id="3_u5355"]
 [ext_resource type="AudioStream" uid="uid://d3o5077usji22" path="res://Sounds/SFX/card.mp3" id="5_bmd77"]
-[ext_resource type="Texture2D" path="res://Sprites/Cards/round_marker_empty.png" id="5_gykdl"]
+[ext_resource type="Texture2D" uid="uid://fh2q6vvx3cgl" path="res://Sprites/round_marker_empty.png" id="5_gykdl"]
 [ext_resource type="FontFile" uid="uid://djmf3x3u2lnfm" path="res://Fonts/Minecraft.ttf" id="6_2oipp"]
 [ext_resource type="Script" path="res://Scripts/card.gd" id="6_6txbv"]
 [ext_resource type="Texture2D" uid="uid://c0sd1n23l7uls" path="res://Sprites/Cards/discard.png" id="7_xfv1q"]
 [ext_resource type="Script" path="res://Scripts/discard.gd" id="8_o3b5b"]
+[ext_resource type="Texture2D" uid="uid://eyjkgedsewvl" path="res://Sprites/trashUI.png" id="12_2s4qs"]
+[ext_resource type="Script" path="res://Scripts/trashed_card.gd" id="13_p7ins"]
 [ext_resource type="Texture2D" uid="uid://caep3dkg6usxw" path="res://Sprites/Cards/back.png" id="15_jmfcd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6mi0s"]
@@ -308,5 +310,117 @@ theme_override_font_sizes/font_size = 32
 text = "P2: 100"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Trash UI" type="Node" parent="."]
+
+[node name="Trash" type="Sprite2D" parent="Trash UI"]
+z_index = 1000
+position = Vector2(-1160, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("12_2s4qs")
+script = ExtResource("13_p7ins")
+
+[node name="Cards" type="Node2D" parent="Trash UI/Trash"]
+scale = Vector2(0.333333, 0.333333)
+
+[node name="Discarded 1" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(-81, -243)
+scale = Vector2(3, 3)
+
+[node name="Discarded 2" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(-81, -189)
+scale = Vector2(3, 3)
+
+[node name="Discarded 3" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(-81, -135)
+scale = Vector2(3, 3)
+
+[node name="Discarded 4" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(-81, -81)
+scale = Vector2(3, 3)
+
+[node name="Discarded 5" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(-81, -27)
+scale = Vector2(3, 3)
+
+[node name="Discarded 6" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(-81, 27)
+scale = Vector2(3, 3)
+
+[node name="Discarded 7" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(-81, 81)
+scale = Vector2(3, 3)
+
+[node name="Discarded 8" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(-81, 135)
+scale = Vector2(3, 3)
+
+[node name="Discarded 9" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(-81, 189)
+scale = Vector2(3, 3)
+
+[node name="Discarded 10" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(-81, 243)
+scale = Vector2(3, 3)
+
+[node name="Discarded 11" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(81, -243)
+scale = Vector2(3, 3)
+
+[node name="Discarded 12" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(81, -189)
+scale = Vector2(3, 3)
+
+[node name="Discarded 13" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(81, -135)
+scale = Vector2(3, 3)
+
+[node name="Discarded 14" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(81, -81)
+scale = Vector2(3, 3)
+
+[node name="Discarded 15" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(81, -27)
+scale = Vector2(3, 3)
+
+[node name="Discarded 16" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(81, 27)
+scale = Vector2(3, 3)
+
+[node name="Discarded 17" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(81, 81)
+scale = Vector2(3, 3)
+
+[node name="Discarded 18" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(81, 135)
+scale = Vector2(3, 3)
+
+[node name="Discarded 19" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(81, 189)
+scale = Vector2(3, 3)
+
+[node name="Discarded 20" type="Sprite2D" parent="Trash UI/Trash/Cards"]
+z_index = 10
+position = Vector2(81, 243)
+scale = Vector2(3, 3)
 
 [connection signal="pressed" from="Game Manager/Trash" to="Game Manager" method="_on_trash_pressed"]

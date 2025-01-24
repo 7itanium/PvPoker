@@ -27,6 +27,7 @@ extends Node
 @onready var round_marker_1: Sprite2D = $"../Table/Round Marker 1"
 @onready var round_marker_2: Sprite2D = $"../Table/Round Marker 2"
 @onready var round_marker_3: Sprite2D = $"../Table/Round Marker 3"
+@onready var trash_UI: Sprite2D = $"../Trash UI/Trash"
 
 
 
@@ -96,6 +97,7 @@ var offsets = []
 var hand = []
 var values = []
 var suits = []
+var buttons = []
 var rerolls = 0
 var round_marker_full_texture = "res://Sprites/round_marker_full.png"
 var round_marker_empty_texture = "res://Sprites/round_marker_empty.png"
@@ -113,6 +115,9 @@ func _ready():
 	discard.texture = load(empty_texture)
 	
 	liveDeck = deck.keys()
+	trash_UI.card_textures = []
+	for i in range(len(trash_UI.discarded)):
+		trash_UI.discarded[i].texture = load(" ")
 	
 	rerolls = 0
 	p1Hand = [card_1, card_2, card_3, card_4, card_5]
@@ -142,6 +147,23 @@ func _ready():
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Reset"):
 		get_tree().reload_current_scene()
+		
+	if Input.is_action_just_pressed("Lock-in"):
+		_on_trash_pressed()
+	
+	if Input.is_action_just_pressed("Trash Open"):
+		if rerolls > 0 and trash.disabled == false:
+			if trash_UI.target_position.x != -690:
+				trash_UI.target_position.x = -690
+			else:
+				trash_UI.target_position.x = -1160
+	
+	p1Hand = [card_1, card_2, card_3, card_4, card_5]
+	buttons = ["Card 1", "Card 2", "Card 3", "Card 4", "Card 5"]
+	for i in range(5):
+		if Input.is_action_just_pressed(buttons[i]):
+			p1Hand[i].button_select()
+		
 	match rerolls:
 		0:
 			round_marker_1.texture = load(round_marker_empty_texture)
@@ -165,7 +187,7 @@ func _process(delta: float) -> void:
 	p1_health_text.text = "P1: " + str(p1HP)
 	p2_health_bar.value = p2HP
 	p2_health_text.text = "P2: " + str(p2HP)
-	
+
 
 func choose_card(x, handnum):
 	var cardKey = liveDeck[randi() % liveDeck.size()]
@@ -177,8 +199,10 @@ func choose_card(x, handnum):
 	liveDeck.erase(cardKey)
 
 func _on_trash_pressed() -> void:
+	trash_UI.target_position.x = -1160
 	rerolls += 1
 	trash.disabled = true
+	discard.disabled = true
 	p1Hand = [card_1, card_2, card_3, card_4, card_5]
 	p2Hand = [card_6, card_7, card_8, card_9, card_10]
 	bothHands = p1Hand + p2Hand
@@ -199,6 +223,7 @@ func _on_trash_pressed() -> void:
 	
 	for i in range(0,10):
 		if bothHands[i].trashing == true:
+			trash_UI.card_textures.append(bothHands[i].dynamic_path)
 			bothHands[i].position = Vector2(0, 0)
 			if i >= 5:
 				bothHands[i].target_position = Vector2(offsets[i - 5], -275)
@@ -232,6 +257,7 @@ func _on_trash_pressed() -> void:
 		_ready()
 
 	trash.disabled = false
+	discard.disabled = false
 
 func check_hand(handnum):
 	values = [handnum[0].cardNum, handnum[1].cardNum, handnum[2].cardNum, handnum[3].cardNum, handnum[4].cardNum]

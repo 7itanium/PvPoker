@@ -16,9 +16,10 @@ extends Node
 @onready var trash: Button = $Trash
 @onready var discard: Sprite2D = $Discard
 @onready var flip_sound: AudioStreamPlayer2D = $FlipSound
+@onready var bridge_sound: AudioStreamPlayer2D = $BridgeSound
+
 @onready var p1_hand_value: Label = $HandValue
 @onready var p2_hand_value: Label = $HandValue2
-
 @onready var p1_health_bar: ProgressBar = $"../P1 Cards/HealthBar"
 @onready var p1_health_text: Label = $"../P1 Cards/HealthBar/HealthText"
 @onready var p2_health_bar: ProgressBar = $"../P2 Cards/HealthBar"
@@ -148,7 +149,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Reset"):
 		get_tree().reload_current_scene()
 		
-	if Input.is_action_just_pressed("Lock-in"):
+	if Input.is_action_just_pressed("Lock-in") and trash.disabled == false:
 		_on_trash_pressed()
 	
 	if Input.is_action_just_pressed("Trash Open"):
@@ -253,6 +254,7 @@ func _on_trash_pressed() -> void:
 		for i in range(0,10):
 			bothHands[i].target_position = Vector2(0, 0)
 		discard.target_position = Vector2(0, 0)
+		bridge_sound.play()
 		await get_tree().create_timer(1.5).timeout
 		_ready()
 

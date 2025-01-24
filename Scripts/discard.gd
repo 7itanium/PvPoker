@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 	if position.distance_to(target_position) < 1:
 		position = target_position
 
+
 func _input(event):
 	if disabled == false:
 		if event is InputEventMouseButton:

@@ -154,10 +154,10 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Trash Open"):
 		if rerolls > 0 and trash.disabled == false:
-			if trash_UI.target_position.x != -690:
-				trash_UI.target_position.x = -690
-			else:
-				trash_UI.target_position.x = -1160
+			trash_UI.target_position.x = -690
+	if Input.is_action_just_released("Trash Open"):
+		if rerolls > 0 and trash.disabled == false:
+			trash_UI.target_position.x = -1160
 	
 	p1Hand = [card_1, card_2, card_3, card_4, card_5]
 	buttons = ["Card 1", "Card 2", "Card 3", "Card 4", "Card 5"]

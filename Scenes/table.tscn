@@ -104,7 +104,7 @@ z_index = 50
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_mcqbc")
 
-[node name="Camera2D" type="Camera2D" parent="Table"]
+[node name="Player1 Camera" type="Camera2D" parent="Table"]
 
 [node name="Round Marker 1" type="Sprite2D" parent="Table"]
 position = Vector2(-837, 66)

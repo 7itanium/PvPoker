@@ -130,6 +130,7 @@ stream = ExtResource("5_bmd77")
 
 [node name="BridgeSound" type="AudioStreamPlayer2D" parent="Game Manager"]
 stream = ExtResource("8_j277j")
+volume_db = -5.0
 
 [node name="Trash" type="Button" parent="Game Manager"]
 anchors_preset = -1
